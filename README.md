@@ -1,1 +1,3 @@
 # SharpStatusApp
+
+It's sharp

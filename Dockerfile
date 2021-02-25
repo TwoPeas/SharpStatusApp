@@ -6,10 +6,10 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
 WORKDIR /src
-COPY ["SharpStatusApp.csproj", "SharpStatusApp/"]
+COPY ["SharpStatusApp/SharpStatusApp.csproj", "SharpStatusApp/"]
 RUN dotnet restore "SharpStatusApp/SharpStatusApp.csproj"
-WORKDIR "SharpStatusApp/"
-COPY . .
+WORKDIR "/src/SharpStatusApp/"
+COPY "SharpStatusApp/." .
 RUN dotnet build "SharpStatusApp.csproj" -c Release -o /app/build
 
 FROM build AS publish

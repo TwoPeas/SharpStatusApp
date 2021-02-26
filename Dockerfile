@@ -22,7 +22,6 @@ RUN dotnet publish "SharpStatusApp.csproj" -c Release -o /app/publish
 
 FROM base AS final
 EXPOSE 8080
-
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "SharpStatusApp.dll"]

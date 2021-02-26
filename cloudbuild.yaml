@@ -1,12 +1,22 @@
 steps:
-- name: 'docker'
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/github.com/twopeas/sharpstatusapp:current', '.']
+ - name: 'gcr.io/cloud-builders/docker'
+   args: ['build', '-t', 'gcr.io/$PROJECT_ID/sharpstatus-webapp:$COMMIT_SHA', '.']
 
-- name: 'gcr.io/cloud-builders/docker'
-  args: [ 'push', 'gcr.io/$PROJECT_ID/github.com/twopeas/sharpstatusapp:current']
+ - name: 'gcr.io/cloud-builders/docker'
+   args: ['push', 'gcr.io/$PROJECT_ID/sharpstatus-webapp:$COMMIT_SHA']
 
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: gcloud
-  args: ['run', 'deploy', 'sharpstatus-webapp', '--image', 'gcr.io/PROJECT_ID/github.com/twopeas/sharpstatusapp:current', '--region', 'us-central1', '--platform', 'managed']
+ - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+   entrypoint: gcloud
+   args:
+   - 'run'
+   - 'deploy'
+   - 'sharpstatus-webapp'
+   - '--image'
+   - 'gcr.io/$PROJECT_ID/sharpstatus-webapp:$COMMIT_SHA'
+   - '--region'
+   - 'us-central1'
+   - '--platform'
+   - 'managed'
 
-images: ['gcr.io/$PROJECT_ID/github.com/twopeas/sharpstatusapp:current']
+images:
+ - 'gcr.io/$PROJECT_ID/sharpstatus-webapp:$COMMIT_SHA'

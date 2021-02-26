@@ -21,8 +21,7 @@ FROM build AS publish
 RUN dotnet publish "SharpStatusApp.csproj" -c Release -o /app/publish
 
 FROM base AS final
-ENV PORT=80
-EXPOSE ${PORT}
+EXPOSE 8080
 
 WORKDIR /app
 COPY --from=publish /app/publish .

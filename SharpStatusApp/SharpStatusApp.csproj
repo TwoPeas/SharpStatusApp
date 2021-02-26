@@ -12,7 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <None Include="wwwroot\favicon.ico" />
+    <None Include="wwwroot\robots.txt" />
   </ItemGroup>
 
 </Project>

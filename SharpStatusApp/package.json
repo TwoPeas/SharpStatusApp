@@ -5,10 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:dev": "postcss ./Public/css/base.css -o ./wwwroot/css/base.css",
-    "clean": "gulp clean",
-    "build": "gulp default",
-    "watch": "gulp watch",
+    "clean:css": "del-cli ./wwwroot/css/**",
+    "clean:js": "del-cli ./wwwroot/js/**",
+    "clean": "npm-run-all --parallel clean:css clean:js",
+    "build:css": "postcss ./public/css/base.css -o ./wwwroot/css/site.css",
+    "build:js": "echo \"No js\"",
+    "build": "npm-run-all --parallel build:css build:js",
+    "watch:css": "chokidar ./public/css/*.* -c \"npm run build:css\"",
+    "watch:app": "browser-sync start --proxy \"localhost:5000\" --files \"./wwwroot/css/**, ./Pages/**.cshtml\"",
+    "watch": "npm-run-all --parallel watch:css watch:app",
     "start": "npm run watch"
   },
   "repository": {
@@ -24,10 +29,9 @@
   "devDependencies": {
     "autoprefixer": "^10.2.4",
     "browser-sync": "^2.26.14",
-    "del": "^6.0.0",
-    "gulp": "^4.0.2",
-    "gulp-concat": "^2.6.1",
-    "gulp-postcss": "^9.0.0",
+    "chokidar-cli": "^2.1.0",
+    "del-cli": "^3.0.1",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.2.6",
     "postcss-cli": "^8.3.1",
     "postcss-purgecss": "^2.0.3",

@@ -12,7 +12,7 @@ WORKDIR "/src/SharpStatusApp/"
 COPY "SharpStatusApp/." .
 
 ENV NODE_ENV=production
-RUN npm ci --also=dev
+RUN npm ci
 RUN npm run build
 RUN dotnet build "SharpStatusApp.csproj" -c Release -o /app/build
 

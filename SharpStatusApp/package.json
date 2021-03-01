@@ -1,8 +1,5 @@
 {
   "name": "sharpstatusapp",
-  "version": "1.0.0",
-  "description": "It's sharp",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean:css": "del-cli ./wwwroot/css/**",
@@ -13,15 +10,15 @@
     "build": "npm run clean && npm-run-all --parallel build:*",
     "watch:css": "chokidar ./public/css/*.* -c \"npm run build:css\"",
     "watch:app": "browser-sync start --proxy \"localhost:5000\" --files \"./wwwroot/css/**, ./Pages/**.cshtml\"",
-    "watch": "npm-run-all --parallel watch:css watch:app",
+    "watch": "npm-run-all --parallel watch:*",
     "start": "npm run watch"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TwoPeas/SharpStatusApp.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Ben Hyrman",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/TwoPeas/SharpStatusApp/issues"
   },

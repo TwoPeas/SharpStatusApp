@@ -11,7 +11,7 @@ steps:
    secretEnv: ['USERNAME', 'PASSWORD']
 
  - name: 'gcr.io/cloud-builders/docker'
-   args: ['push', 'ghcr.io/$DOCKER_USERNAME_SECRET_NAME/sharpstatus-webapp:latest']
+   args: ['push', 'ghcr.io/hyrmn/sharpstatus-webapp:latest']
 
  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
    entrypoint: gcloud

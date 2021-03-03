@@ -7,11 +7,11 @@ steps:
 
  - name: 'gcr.io/cloud-builders/docker'
    entrypoint: 'bash'
-   args: ['-c', 'docker login --username=$$USERNAME --password=$$PASSWORD']
+   args: ['-c', 'docker login ghcr.io --username=$$USERNAME --password=$$PASSWORD']
    secretEnv: ['USERNAME', 'PASSWORD']
 
  - name: 'gcr.io/cloud-builders/docker'
-   args: ['push', 'ghcr.io/hyrmn/sharpstatus-webapp:latest']
+   args: ['push', 'ghcr.io/hyrmn/sharpstatus-webapp:$COMMIT_SHA']
 
  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
    entrypoint: gcloud

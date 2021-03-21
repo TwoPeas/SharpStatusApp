@@ -29,7 +29,7 @@ namespace SharpStatusApp
         {
             services.AddDbContext<ApplicationUserDbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"), 
-                npgsqlOptionsAction => npgsqlOptionsAction.MigrationsHistoryTable("__EFMigrationsHistory", "Users")));
+                npgsqlOptionsAction => npgsqlOptionsAction.MigrationsHistoryTable("__EFMigrationsHistory", "Organizations")));
 
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationUserDbContext>()

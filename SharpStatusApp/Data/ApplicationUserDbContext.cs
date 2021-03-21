@@ -16,8 +16,8 @@ namespace SharpStatusApp.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
             modelBuilder.HasDefaultSchema("Organizations");
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

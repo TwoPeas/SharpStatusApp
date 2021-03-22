@@ -24,7 +24,8 @@ namespace SharpStatusApp
         public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
-            using var scope = host.Services.CreateScope();
+            
+/*            using var scope = host.Services.CreateScope();
             var services = scope.ServiceProvider;
 
             using var userDbCtx = services.GetRequiredService<ApplicationUserDbContext>();
@@ -51,8 +52,8 @@ namespace SharpStatusApp
                 throw new InvalidOperationException("There are differences between the current database model and the most recent migration.");
             }
 
-            //userDbCtx.Database.Migrate();
-
+            userDbCtx.Database.Migrate();
+*/
             host.Run();
         }
 

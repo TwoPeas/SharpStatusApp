@@ -62,8 +62,9 @@ namespace SharpStatusApp
                 endpoints.MapRazorPages();
                 endpoints.MapGet("/secrets", async context =>
                 {
-                    var secret = new AccessSecretVersionSample().AccessSecretVersion();
-                    await context.Response.WriteAsync(secret);
+
+                    var secret = Configuration.GetConnectionString("DefaultConnection");
+                    await context.Response.WriteAsync($"The secret is: `{secret}`");
                 });
             });
         }

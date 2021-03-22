@@ -19,8 +19,14 @@ RUN dotnet build "SharpStatusApp.csproj" -c Release -o /app/build
 FROM build AS publish
 RUN dotnet publish "SharpStatusApp.csproj" -c Release -o /app/publish
 
+FROM binxio/gcp-get-secret:0.4.1 as gcpget
 FROM base AS final
 EXPOSE 8080
 WORKDIR /app
+COPY --from=gcpget /gcp-get-secret /usr/local/bin/
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "SharpStatusApp.dll"]
+
+ENV ConnectionStrings__DefaultConnection=gcp:///twopeas/perfect-day
+
+ENTRYPOINT [ "/usr/local/bin/gcp-get-secret", "--use-default-credentials"]
+CMD ["dotnet", "SharpStatusApp.dll"]

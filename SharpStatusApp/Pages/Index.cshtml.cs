@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
+using Google.Cloud.SecretManager.V1;
+
 namespace SharpStatusApp.Pages
 {
     public class IndexModel : PageModel
@@ -23,4 +25,6 @@ namespace SharpStatusApp.Pages
 
         }
     }
+
+
 }

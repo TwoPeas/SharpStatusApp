@@ -51,7 +51,7 @@ namespace SharpStatusApp
                 throw new InvalidOperationException("There are differences between the current database model and the most recent migration.");
             }
 
-            userDbCtx.Database.Migrate();
+            //userDbCtx.Database.Migrate();
 
             host.Run();
         }

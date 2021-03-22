@@ -28,5 +28,5 @@ COPY --from=publish /app/publish .
 
 ENV ConnectionStrings__DefaultConnection=gcp:///twopeas/perfect-day
 
-ENTRYPOINT [ "/usr/local/bin/gcp-get-secret", "--use-default-credentials"]
+ENTRYPOINT [ "/usr/local/bin/gcp-get-secret", "--project", "twopeas", "--use-default-credentials"]
 CMD ["dotnet", "SharpStatusApp.dll"]

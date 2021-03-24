@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace SharpStatusApp.Data
 {
-    public class ApplicationUserDbContext : IdentityDbContext<ApplicationUser>
+    public class OrganizationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationUserDbContext(DbContextOptions<ApplicationUserDbContext> options)
+        public OrganizationDbContext(DbContextOptions<OrganizationDbContext> options)
             : base(options)
         {
         }

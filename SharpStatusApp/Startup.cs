@@ -30,12 +30,12 @@ namespace SharpStatusApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationUserDbContext>(options =>
+            services.AddDbContext<OrganizationDbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"),
                 npgsqlOptionsAction => npgsqlOptionsAction.MigrationsHistoryTable("__EFMigrationsHistory", "Organizations")));
 
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationUserDbContext>()
+                .AddEntityFrameworkStores<OrganizationDbContext>()
                 .AddDefaultTokenProviders();
 
             services.AddRazorPages();

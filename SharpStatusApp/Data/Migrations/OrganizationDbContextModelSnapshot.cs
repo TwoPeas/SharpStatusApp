@@ -8,8 +8,8 @@ using SharpStatusApp.Data;
 
 namespace SharpStatusApp.Data.Migrations
 {
-    [DbContext(typeof(ApplicationUserDbContext))]
-    partial class ApplicationUserDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(OrganizationDbContext))]
+    partial class OrganizationDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

@@ -9,7 +9,7 @@ using SharpStatusApp.Data;
 
 namespace SharpStatusApp.Data.Migrations
 {
-    [DbContext(typeof(OrganizationDbContext))]
+    [DbContext(typeof(TenantsDbContext))]
     [Migration("00000000000001_CreateIdentityTables")]
     partial class CreateIdentityTables
     {

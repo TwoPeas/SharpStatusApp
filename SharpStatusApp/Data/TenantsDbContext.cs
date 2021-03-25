@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SharpStatusApp.Data
 {
-    public class OrganizationDbContext : IdentityDbContext<ApplicationUser>
+    public class TenantsDbContext : IdentityDbContext<ApplicationUser>
     {
-        public OrganizationDbContext(DbContextOptions<OrganizationDbContext> options)
+        public TenantsDbContext(DbContextOptions<TenantsDbContext> options)
             : base(options)
         {
         }

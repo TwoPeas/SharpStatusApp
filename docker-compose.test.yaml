@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:13.1
+    restart: always
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-d", "postgres", "-U", "root" ]
+      timeout: 45s
+      interval: 10s
+      retries: 10
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=sharpstatus
+    ports:
+      - "5432:5432"
+    networks:
+      - sharpstatusapp_network      
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@pgadmin.com
+      - PGADMIN_DEFAULT_PASSWORD=password
+      - PGADMIN_LISTEN_PORT=80
+    depends_on:
+        - postgres
+    ports:
+      - "8888:80"
+    networks:
+      - sharpstatusapp_network
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+
+  app:
+    image: sharpstatusapp
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=postgres;Port=5432;Database=sharpstatus;User Id=root;Password=root
+    depends_on:
+        - postgres
+    ports:
+      - "8585:80"
+    networks:
+      - sharpstatusapp_network
+
+networks:
+  sharpstatusapp_network:
+     driver: bridge
+
+volumes:
+  postgres:
+  pgadmin:

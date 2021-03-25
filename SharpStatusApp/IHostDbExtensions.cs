@@ -21,7 +21,7 @@ namespace SharpStatusApp
             host.MigrateOrganizationDb();
 
         internal static IHost MigrateOrganizationDb(this IHost host) => 
-            host.MigrateDbContext<OrganizationDbContext>();
+            host.MigrateDbContext<TenantsDbContext>();
 
         internal static IHost MigrateDbContext<TContext>(this IHost host) where TContext : DbContext
         {
